@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/backgroundadd">
+
+    <include
+        layout="@layout/action_toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+
+    <LinearLayout
+        android:id="@+id/lineLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/dataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/textColor"
+             />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/setWodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lineLayout"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/textColor"
+        android:text="Type of workouts:"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/font_size"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/typeWodSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/setWodText"
+        android:layout_marginTop="23dp"
+        style="@style/mySpinnerItemStyle"
+        android:backgroundTint="@color/textColor"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/setTimeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="time cap"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:textColorHint="#59ffffff" />
+
+    <EditText
+        android:id="@+id/workSetEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/top_margin"
+        android:hint="type workout"
+        android:textColorHint="#59ffffff"
+        android:textColor="@color/textColor"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/setTimeEdit" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="19dp"
+        android:layout_marginRight="19dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_add" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/setWodText"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:clickable="true"
+        android:onClick="showDatePickerDialog"
+        app:srcCompat="@drawable/ic_date" />
+</RelativeLayout>

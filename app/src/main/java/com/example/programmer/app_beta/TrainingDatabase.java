@@ -4,6 +4,7 @@ package com.example.programmer.app_beta;
 import android.widget.AdapterView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TrainingDatabase {
@@ -14,8 +15,10 @@ public class TrainingDatabase {
         return trainings;
     }
 
-    public static void addExpense(Training training) {
+    public static void addTraining(Training training) {
+        Collections.reverse(trainings);
         trainings.add(training);
+        Collections.reverse(trainings);
     }
 
     public static void delateItem(int position){

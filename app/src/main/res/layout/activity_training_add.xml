@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/setWodText"
         android:layout_marginTop="23dp"
-        style="@style/mySpinnerItemStyle"
+        style="@style/spinner_style"
         android:backgroundTint="@color/textColor"
         android:textAlignment="center" />
 
@@ -102,4 +102,13 @@
         android:clickable="true"
         android:onClick="showDatePickerDialog"
         app:srcCompat="@drawable/ic_date" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/returnButtonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/floatingActionButton"
+        android:layout_alignTop="@+id/add_expense"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_arrow_back" />
 </RelativeLayout>

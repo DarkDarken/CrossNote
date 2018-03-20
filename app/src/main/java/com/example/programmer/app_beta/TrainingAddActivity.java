@@ -2,6 +2,7 @@ package com.example.programmer.app_beta;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -37,8 +38,6 @@ public class TrainingAddActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
 
-
-
         dateEditText = (TextView) findViewById(R.id.dataText);
         timeEditText = (EditText) findViewById(R.id.setTimeEdit);
         categorySpinner = (Spinner) findViewById(R.id.typeWodSpinner);
@@ -48,18 +47,26 @@ public class TrainingAddActivity extends AppCompatActivity {
 
         setCurrentDate(dateEditText);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.add_expense);
-
-        //Button newTrainingButton = (Button) findViewById(R.id.add_expense);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton returnButton = (FloatingActionButton) findViewById(R.id.returnButtonAdd);
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNewExpense();
+                Intent intent = new Intent(TrainingAddActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        FloatingActionButton addTrainingButton = (FloatingActionButton) findViewById(R.id.add_expense);
+        addTrainingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewTraining();
             }
         });
     }
 
-    public void addNewExpense() {
+    public void addNewTraining() {
         int time = 0;
         String work = workEditText.getText().toString();
         if( !timeEditText.getText().toString().equals("") && timeEditText.getText().toString().length() > 0 )
@@ -70,7 +77,7 @@ public class TrainingAddActivity extends AppCompatActivity {
 
 
             Training training = new Training(date, time, category, work);
-            TrainingDatabase.addExpense(training);
+            TrainingDatabase.addTraining(training);
             finish();
         } else {
             Toast.makeText(TrainingAddActivity.this, "Enter the number greater than zero",
@@ -100,11 +107,12 @@ public class TrainingAddActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = getLayoutInflater().inflate(android.R.layout.simple_spinner_item, null);
+                convertView = getLayoutInflater().inflate(R.layout.spinner_item, null);
             }
 
-            TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
+            TextView textView = (TextView) convertView.findViewById(R.id.spItem);
             textView.setText(getItem(position).getName());
+
 
             return convertView;
         }
@@ -126,20 +134,17 @@ public class TrainingAddActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
+        getMenuInflater().inflate(R.menu.menu_add, menu);
         return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.about_menu){
-            Toast.makeText(TrainingAddActivity.this, "About menu was cliked", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.setting_menu){
-            Toast.makeText(TrainingAddActivity.this, "Setting menu was cliked", Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(TrainingAddActivity.this, AboutPopUpActivity.class);
+            startActivity(intent);
         }
         if(item.getItemId() == R.id.add_action){
-            addNewExpense();
+            addNewTraining();
         }
         return super.onOptionsItemSelected(item);
     }

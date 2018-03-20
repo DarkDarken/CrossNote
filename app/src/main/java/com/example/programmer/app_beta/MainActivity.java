@@ -40,11 +40,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.about_menu){
-            Toast.makeText(MainActivity.this, "About menu was cliked", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.setting_menu){
-            Toast.makeText(MainActivity.this, "Setting menu was cliked", Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(MainActivity.this, AboutPopUpActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

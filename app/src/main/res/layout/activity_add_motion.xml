@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.programmer.app_beta.AddMotionActivity">
+
+    <EditText
+        android:id="@+id/repEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="repetition" />
+
+    <Spinner
+        android:id="@+id/motionSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/weightEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="weight" />
+
+    <Button
+        android:id="@+id/buttonAddMotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add motion" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View list" />
+
+</LinearLayout>

@@ -25,4 +25,6 @@ public class TrainingDatabase {
         trainings.remove(position);
     }
 
+    public static void del(Training training){trainings.remove(training);}
+
 }

@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -28,6 +29,8 @@ public class TrainingAddActivity extends AppCompatActivity {
     private EditText timeEditText;
     private Spinner categorySpinner;
     private EditText workEditText;
+    private CategoryAdapter categoryAdapter;
+    private TrainingCategory trainingCategory;
 
 
     @Override
@@ -41,9 +44,9 @@ public class TrainingAddActivity extends AppCompatActivity {
         dateEditText = (TextView) findViewById(R.id.dataText);
         timeEditText = (EditText) findViewById(R.id.setTimeEdit);
         categorySpinner = (Spinner) findViewById(R.id.typeWodSpinner);
-        workEditText = (EditText) findViewById(R.id.workSetEdit);
 
-        categorySpinner.setAdapter(new CategoryAdapter());
+        categoryAdapter = new CategoryAdapter(this, trainingCategory);
+        categorySpinner.setAdapter(categoryAdapter);
 
         setCurrentDate(dateEditText);
 
@@ -68,54 +71,28 @@ public class TrainingAddActivity extends AppCompatActivity {
 
     public void addNewTraining() {
         int time = 0;
-        String work = workEditText.getText().toString();
+        //String work = workEditText.getText().toString();
         if( !timeEditText.getText().toString().equals("") && timeEditText.getText().toString().length() > 0 )
         {
+            ArrayList<Motion> motionList = new ArrayList<Motion>();
+
             String date = dateEditText.getText().toString();
             time = Integer.parseInt(timeEditText.getText().toString());
             TrainingCategory category = (TrainingCategory) categorySpinner.getSelectedItem();
+            boolean box = false;
 
 
-            Training training = new Training(date, time, category, work);
+            Training training = new Training(date, time, category, motionList, box);
             TrainingDatabase.addTraining(training);
-            finish();
+
+            Intent intent = new Intent(TrainingAddActivity.this, AddMotionActivity.class);
+            startActivity(intent);
+            //finish();
         } else {
             Toast.makeText(TrainingAddActivity.this, "Enter the number greater than zero",
                     Toast.LENGTH_LONG).show();
         }
 
-    }
-
-    private class CategoryAdapter extends BaseAdapter {
-
-
-        @Override
-        public int getCount() {
-            return TrainingCategory.values().length;
-        }
-
-        @Override
-        public TrainingCategory getItem(int position) {
-            return TrainingCategory.values()[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.spinner_item, null);
-            }
-
-            TextView textView = (TextView) convertView.findViewById(R.id.spItem);
-            textView.setText(getItem(position).getName());
-
-
-            return convertView;
-        }
     }
 
     public void showDatePickerDialog(View view){

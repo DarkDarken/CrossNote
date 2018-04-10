@@ -34,8 +34,10 @@
                 android:value=".TrainingListActivity" />
         </activity>
         <activity android:name=".TrainingViewActivity" />
-        <activity android:name=".AboutPopUpActivity"
-            android:theme="@style/AppTheme.CustomThame"></activity>
+        <activity
+            android:name=".AboutPopUpActivity"
+            android:theme="@style/AppTheme.CustomThame" />
+        <activity android:name=".AddMotionActivity"></activity>
     </application>
 
 </manifest>

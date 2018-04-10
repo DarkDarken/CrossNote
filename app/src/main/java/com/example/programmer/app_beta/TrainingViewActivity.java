@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import static com.example.programmer.app_beta.TrainingListActivity.POSITION;
 
@@ -29,6 +32,7 @@ public class TrainingViewActivity extends AppCompatActivity {
     AlertDialog dialog;
     EditText editText;
     FloatingActionButton editButton;
+    ListMotionAdapter adapter;
 
 
     @Override
@@ -43,16 +47,29 @@ public class TrainingViewActivity extends AppCompatActivity {
 
         final int position = Integer.parseInt(positionString);
 
-        String work = getIntent().getStringExtra(TrainingListActivity.EXTRA_WORK);
-        final TextView textView = (TextView) findViewById(R.id.textView3);
-        textView.setText(work);
 
-        Toast.makeText(TrainingViewActivity.this, positionString, Toast.LENGTH_SHORT).show();
+        ArrayList<Motion> motion = TrainingDatabase.getTrainings().get(position).getMotion();
+
+        final ListView listView = (ListView) findViewById(R.id.listViewItems);
+
+        adapter = new ListMotionAdapter(this, TrainingDatabase.getTrainings().get(position).getMotion());
+
+        listView.setAdapter(adapter);
+
+
+        String category = TrainingDatabase.getTrainings().get(position).getCategory().getName();
+        int time = TrainingDatabase.getTrainings().get(position).getTime();
+        String timeString = time + " " + "min";
+
+        final TextView textTime = (TextView) findViewById(R.id.textTime);
+        final TextView textCategory = (TextView) findViewById(R.id.textCategory);
+        textTime.setText(timeString);
+        textCategory.setText(category);
+
+        /*editButton = (FloatingActionButton) findViewById(R.id.editButton);
 
         dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme).create();
         editText = new EditText(this);
-        editButton = (FloatingActionButton) findViewById(R.id.editButton);
-
         dialog.setTitle("Edit the training");
         dialog.setView(editText);
 
@@ -65,13 +82,21 @@ public class TrainingViewActivity extends AppCompatActivity {
             }
         });
 
-        editButton.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editText.setText(textView.getText());
                 dialog.show();
             }
         });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(textView.getText());
+                dialog.show();
+            }
+        });*/
 
         FloatingActionButton returnButton = (FloatingActionButton) findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {

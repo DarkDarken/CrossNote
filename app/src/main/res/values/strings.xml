@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CrossNote</string>
+    <string name="app_name">TestSearch</string>
     <string name="addText">Add workout</string>
     <string name="myHistory">My workout</string>
     <string name="action_search">Search</string>

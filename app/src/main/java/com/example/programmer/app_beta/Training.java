@@ -1,21 +1,23 @@
 package com.example.programmer.app_beta;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Training {
     private String date;
     private int time;
     private TrainingCategory category;
-    private String work;
+    private ArrayList<Motion> motion;
+    private boolean box;
 
 
 
-    public Training(String date, int time, TrainingCategory category, String work) {
+    public Training(String date, int time, TrainingCategory category, ArrayList<Motion> motion, boolean box) {
         this.date = date;
         this.time = time;
         this.category = category;
-        this.work = work;
+        this.motion = motion;
+        this.box = box;
 
     }
 
@@ -44,11 +46,15 @@ public class Training {
         this.date = date;
     }
 
-    public String getWork() {
-        return work;
+    public ArrayList<Motion> getMotion() {return motion;}
+
+    public void setMotion (ArrayList<Motion> motion) {this.motion = motion;}
+
+    public boolean isBox() {
+        return box;
     }
 
-    public void setWork(String work) {
-        this.work = work;
+    public void setBox(boolean box) {
+        this.box = box;
     }
 }

@@ -50,16 +50,6 @@ public class TrainingAddActivity extends AppCompatActivity {
 
         setCurrentDate(dateEditText);
 
-        FloatingActionButton returnButton = (FloatingActionButton) findViewById(R.id.returnButtonAdd);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TrainingAddActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         FloatingActionButton addTrainingButton = (FloatingActionButton) findViewById(R.id.add_expense);
         addTrainingButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -75,15 +75,6 @@ public class TrainingListActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton returnButton = (FloatingActionButton) findViewById(R.id.returnButtonList);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TrainingListActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
       trainingListView.setOnItemLongClickListener(new OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
@@ -176,4 +167,10 @@ public class TrainingListActivity extends AppCompatActivity {
             alert.show();
     }
 
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(TrainingListActivity.this, MainActivity.class);
+        startActivity(intent);
+        return;
+    }
     }

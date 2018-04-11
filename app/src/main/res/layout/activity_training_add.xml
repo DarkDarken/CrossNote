@@ -8,48 +8,28 @@
     <include
         layout="@layout/action_toolbar"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
-
-
-    <LinearLayout
-        android:id="@+id/lineLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:id="@+id/dataText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="13dp"
-            android:textColor="@color/textColor"
-             />
-
-    </LinearLayout>
-
-
+        android:layout_width="match_parent"
+        android:id="@+id/include" />
     <TextView
-        android:id="@+id/setWodText"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lineLayout"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="@color/textColor"
-        android:text="Type of workouts:"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
         android:textColor="@color/textColor"
-        android:textSize="@dimen/font_size"
-        android:textStyle="bold" />
+        android:textSize="20pt"
+        android:textStyle="bold"
+        android:layout_below="@+id/include"
+        android:text="Add training" />
+
 
     <Spinner
         android:id="@+id/typeWodSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/setWodText"
-        android:layout_marginTop="23dp"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="50dp"
         style="@style/spinner_style"
         android:backgroundTint="@color/textColor"
         android:textAlignment="center" />
@@ -61,7 +41,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/typeWodSpinner"
         android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:textColor="@color/textColor"
         android:textColorHint="#59ffffff">
 
@@ -71,6 +51,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="time cap"
+            android:textSize="12pt"
             android:inputType="number"
             android:textAlignment="center"
             android:textColor="@color/textColor"
@@ -90,24 +71,28 @@
         android:clickable="true"
         app:srcCompat="@drawable/ic_add" />
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/setWodText"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="22dp"
+        android:layout_alignTop="@+id/add_expense"
+        android:layout_toStartOf="@+id/textView2"
+        android:layout_weight="1"
         android:clickable="true"
         android:onClick="showDatePickerDialog"
         app:srcCompat="@drawable/ic_date" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/returnButtonAdd"
+    <TextView
+        android:id="@+id/dataText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/floatingActionButton"
-        android:layout_alignTop="@+id/add_expense"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        android:layout_alignTop="@+id/floatingActionButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:paddingHorizontal="@dimen/top_margin"
+        android:text="ttd"
+        android:textColor="@color/textColor"
+        android:textSize="6pt" />
+
+
 </RelativeLayout>

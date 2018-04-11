@@ -26,14 +26,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TrainingAddActivity"
-            android:label="Add workout" />
+            android:name=".TrainingAddActivity"/>
         <activity android:name=".TrainingListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".TrainingListActivity" />
         </activity>
-        <activity android:name=".TrainingViewActivity" />
+        <activity android:name=".TrainingViewActivity"
+            android:label="Training"/>
         <activity
             android:name=".AboutPopUpActivity"
             android:theme="@style/AppTheme.CustomThame" />

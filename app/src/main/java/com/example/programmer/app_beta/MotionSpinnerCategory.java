@@ -45,6 +45,7 @@ public class MotionSpinnerCategory extends BaseAdapter {
 
         TextView textView = (TextView) convertView.findViewById(R.id.spItem);
         textView.setText(getItem(position).getName());
+        textView.setTextSize(24);
 
 
         return convertView;
@@ -53,6 +54,7 @@ public class MotionSpinnerCategory extends BaseAdapter {
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         TextView text = new TextView(mContext);
         text.setTextColor(Color.WHITE);
+        text.setTextSize(24);
         text.setFadingEdgeLength(12);
         text.setText(getItem(position).getName());
         text.setBackground(ContextCompat.getDrawable(mContext, R.mipmap.backgroundspinner));

@@ -6,21 +6,21 @@ package com.example.programmer.app_beta;
 
 public class Motion {
 
-    private int repetition;
+    private String repetition;
     private MotionCategory motionCategory;
-    private int weight;
+    private String weight;
 
-    public Motion(int repetition, MotionCategory motionCategory, int weight){
+    public Motion(String repetition, MotionCategory motionCategory, String weight){
         this.repetition = repetition;
         this.motionCategory = motionCategory;
         this.weight = weight;
     }
 
-    public int getRepetition() {
+    public String getRepetition() {
         return repetition;
     }
 
-    public void setRepetition(int repetition) {
+    public void setRepetition(String repetition) {
         this.repetition = repetition;
     }
 
@@ -32,11 +32,11 @@ public class Motion {
         this.motionCategory = motionCategory;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 }

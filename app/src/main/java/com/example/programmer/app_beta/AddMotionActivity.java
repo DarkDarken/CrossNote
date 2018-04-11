@@ -1,6 +1,9 @@
 package com.example.programmer.app_beta;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +18,8 @@ public class AddMotionActivity extends AppCompatActivity {
 
     private EditText repetition, weight;
     private Spinner motionSpinner;
-    private Button button, buttonView;
+    private AlertDialog dialog;
+    private FloatingActionButton button, buttonView;
     private MotionSpinnerCategory categoryAdapter;
     private MotionCategory motionCategory;
 
@@ -24,9 +28,10 @@ public class AddMotionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_motion);
 
+        AlertDialog();
 
-        button = (Button) findViewById(R.id.buttonAddMotion);
-        buttonView = (Button) findViewById(R.id.buttonView);
+        button = (FloatingActionButton) findViewById(R.id.buttonAddMotion);
+        buttonView = (FloatingActionButton) findViewById(R.id.buttonView);
         repetition = (EditText) findViewById(R.id.repEdit);
         weight = (EditText) findViewById(R.id.weightEdit);
         motionSpinner = (Spinner) findViewById(R.id.motionSpinner);
@@ -41,25 +46,40 @@ public class AddMotionActivity extends AppCompatActivity {
                 MotionCategory motion = (MotionCategory) motionSpinner.getSelectedItem();
                 String w = weight.getText().toString();
 
-                int repInt = Integer.valueOf(rep);
-                int weightInt = Integer.valueOf(w);
-
-                Motion motion1 = new Motion(repInt, motion, weightInt);
+                Motion motion1 = new Motion(rep, motion, w);
 
                 ArrayList<Motion> motionList = TrainingDatabase.getTrainings().get(0).getMotion();
 
                 motionList.add(motion1);
+                Toast.makeText(AddMotionActivity.this, "You add new movment", Toast.LENGTH_SHORT).show();
             }
         });
 
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddMotionActivity.this, TrainingListActivity.class);
-                startActivity(intent);
+                dialog.show();
 
             }
         });
 
+    }
+
+    public void AlertDialog(){
+        dialog = new AlertDialog.Builder(AddMotionActivity.this, R.style.MyDialogTheme).create();
+        dialog.setTitle("Did you finish adding movment?");
+
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(AddMotionActivity.this, TrainingListActivity.class);
+                startActivity(intent);
+            }
+        });
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
     }
 }

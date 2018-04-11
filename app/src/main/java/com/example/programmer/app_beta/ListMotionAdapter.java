@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -55,14 +56,21 @@ public class ListMotionAdapter extends BaseAdapter {
             holder = (ListMotionAdapter.ViewHolder) view.getTag();
         }
 
+        String name = arraylist.get(position).getMotionCategory().getName();
+
         holder.motion.setText(arraylist.get(position).getMotionCategory().getName());
-        if(arraylist.get(position).getMotionCategory().getName() == "Row") {
+        if("Airbike" == name || "Row" == name) {
             holder.weight.setText(arraylist.get(position).getWeight() + " cal");
-            holder.repetition.setText(arraylist.get(position).getRepetition() + "");
-        }
-        else {
+            holder.repetition.setText("  ");
+        } else if("Run" == name){
+            holder.weight.setText(arraylist.get(position).getWeight() + " m");
+            holder.repetition.setText("  ");
+        } else if("Pull-up" == name || "Chest to bar" == name || "Box jump" == name || "Burpee" == name){
+            holder.weight.setText("");
+            holder.repetition.setText(arraylist.get(position).getRepetition());
+        } else {
             holder.weight.setText(arraylist.get(position).getWeight() + " kg");
-            holder.repetition.setText(arraylist.get(position).getRepetition() + "");
+            holder.repetition.setText(arraylist.get(position).getRepetition());
         }
 
         return view;

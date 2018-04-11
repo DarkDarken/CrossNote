@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -31,7 +32,6 @@ public class TrainingViewActivity extends AppCompatActivity {
     TextView textView;
     AlertDialog dialog;
     EditText editText;
-    FloatingActionButton editButton;
     ListMotionAdapter adapter;
 
 
@@ -66,8 +66,21 @@ public class TrainingViewActivity extends AppCompatActivity {
         textTime.setText(timeString);
         textCategory.setText(category);
 
-        /*editButton = (FloatingActionButton) findViewById(R.id.editButton);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_view, menu);
+        return true;
+    }
+
+    /*public void EditMotion(final int position, final int element){
         dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme).create();
         editText = new EditText(this);
         dialog.setTitle("Edit the training");
@@ -76,43 +89,20 @@ public class TrainingViewActivity extends AppCompatActivity {
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, "SAVE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Training tran = TrainingDatabase.getTrainings().get(position);
-                tran.setWork(editText.getText().toString());
-                textView.setText(TrainingDatabase.getTrainings().get(position).getWork());
+                ArrayList<Motion> list = TrainingDatabase.getTrainings().get(position).getMotion();
+                list.remove(element);
+                String rep = list.get(element).getRepetition();
+                String mot = list.get(element).getMotionCategory().getName();
+                String w =
+                Motion motion = new Motion()
+                list.add(element, );
             }
         });
-
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editText.setText(textView.getText());
-                dialog.show();
-            }
-        });
-
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editText.setText(textView.getText());
-                dialog.show();
-            }
-        });*/
-
-        FloatingActionButton returnButton = (FloatingActionButton) findViewById(R.id.returnButton);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TrainingViewActivity.this, TrainingListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-    }
+    }*/
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_view, menu);
-        return true;
+    public void onBackPressed(){
+        Intent intent = new Intent(TrainingViewActivity.this, TrainingListActivity.class);
+        startActivity(intent);
+        return;
     }
 }

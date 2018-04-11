@@ -1,42 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/backgroundadd"
     tools:context="com.example.programmer.app_beta.AddMotionActivity">
 
-    <EditText
-        android:id="@+id/repEdit"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="repetition" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:text="Add movment"
+        android:textColor="@color/textColor"
+        android:textSize="20pt"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/motionSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView"/>
 
-    <EditText
-        android:id="@+id/weightEdit"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/TextInputRep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="weight" />
+        android:textColor="@color/textColor"
+        android:layout_below="@id/motionSpinner"
+        android:layout_marginTop="50dp"
+        android:textColorHint="#59ffffff">
 
-    <Button
+        <EditText
+            android:id="@+id/repEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:ems="10"
+            android:textColor="@color/textColor"
+            android:textColorHint="#59ffffff"
+            android:hint="repetition"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/TextInputWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextInputRep"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="#59ffffff">
+
+        <EditText
+            android:id="@+id/weightEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textSize="12pt"
+            android:hint="weight or calories"
+            android:inputType="number"
+            android:textColor="@color/textColor"
+            android:textColorHint="#59ffffff" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonAddMotion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add motion" />
+        android:layout_alignBottom="@+id/buttonView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_add" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View list" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="27dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_history" />
 
-</LinearLayout>
+</RelativeLayout>

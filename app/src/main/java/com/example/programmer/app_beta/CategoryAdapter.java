@@ -53,6 +53,7 @@ public class CategoryAdapter extends BaseAdapter {
     TextView text = new TextView(mContext);
     text.setTextColor(Color.WHITE);
     text.setFadingEdgeLength(12);
+    text.setTextSize(24);
     text.setText(getItem(position).getName());
     text.setBackground(ContextCompat.getDrawable(mContext, R.mipmap.backgroundspinner));
 

@@ -6,8 +6,10 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MotionSpinnerCategory extends BaseAdapter {
@@ -62,4 +64,6 @@ public class MotionSpinnerCategory extends BaseAdapter {
         return text;
 
     }
+
+
 }

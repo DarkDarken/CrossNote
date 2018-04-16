@@ -10,5 +10,4 @@
         android:icon="@drawable/ic_add_action"
         android:title="Add"
         app:showAsAction="ifRoom" />
-
 </menu>

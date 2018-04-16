@@ -65,7 +65,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:textSize="12pt"
-            android:hint="weight or calories"
             android:inputType="number"
             android:textColor="@color/textColor"
             android:textColorHint="#59ffffff" />

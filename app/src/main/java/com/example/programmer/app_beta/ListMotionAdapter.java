@@ -60,12 +60,14 @@ public class ListMotionAdapter extends BaseAdapter {
 
         holder.motion.setText(arraylist.get(position).getMotionCategory().getName());
         if("Airbike" == name || "Row" == name) {
-            holder.weight.setText(arraylist.get(position).getWeight() + " cal");
-            holder.repetition.setText("  ");
-        } else if("Run" == name){
-            holder.weight.setText(arraylist.get(position).getWeight() + " m");
-            holder.repetition.setText("  ");
-        } else if("Pull-up" == name || "Chest to bar" == name || "Box jump" == name || "Burpee" == name){
+            holder.weight.setText(arraylist.get(position).getRepetition() + " cal");
+            holder.repetition.setText("");
+        } else if("Run" == name || "Handstand walk" == name){
+            holder.weight.setText("");
+            holder.repetition.setText(arraylist.get(position).getWeight() + " m");
+        } else if("Pull-up" == name || "Chest to bar" == name || "Box jump" == name || "Burpee" == name || "Bar muscle up" == name || "Air squat" == name ||
+        "HSPU" == name || "Pistol" == name || "Push-up" == name || "Ring dip" == name || "Ring muscle up" == name || "Rope climb" == name || "Sit-up" == name ||
+                "Toe to bar" == name ){
             holder.weight.setText("");
             holder.repetition.setText(arraylist.get(position).getRepetition());
         } else {

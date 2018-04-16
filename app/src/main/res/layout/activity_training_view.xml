@@ -45,5 +45,24 @@
     <ListView
         android:id="@+id/listViewItems"
         android:layout_width="match_parent"
-        android:layout_height="362dp" />
+        android:layout_height="362dp" >
+
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addMotionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="22dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_add" />
+    </RelativeLayout>
+
 </LinearLayout>

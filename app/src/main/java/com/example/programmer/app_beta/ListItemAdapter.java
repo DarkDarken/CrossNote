@@ -57,7 +57,7 @@ public class ListItemAdapter extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.list_item_training, null);
-            // Locate the TextViews in listview_item.xml
+
             holder.date = (TextView) view.findViewById(R.id.date);
             holder.time = (TextView) view.findViewById(R.id.timeCap);
             holder.category = (TextView) view.findViewById(R.id.category);
@@ -68,7 +68,20 @@ public class ListItemAdapter extends BaseAdapter {
         }
         // Set the results into TextViews
         holder.date.setText(trainingslist.get(position).getDate());
-        holder.time.setText(trainingslist.get(position).getTime() + " " + "min");
+        holder.category.setText(trainingslist.get(position).getCategory().getName());
+        String time = trainingslist.get(position).getTime();
+        if(trainingslist.get(position).getCategory().getName() == "RFT"){
+            if(time == "1") {
+                holder.time.setText(trainingslist.get(position).getTime() + " " + "round");
+            } else {
+                holder.time.setText(trainingslist.get(position).getTime() + " " + "rounds");
+            }
+        } else if(trainingslist.get(position).getCategory().getName() == "Benchmark"){
+            holder.time.setText(trainingslist.get(position).getTime() + "");
+        } else{
+
+            holder.time.setText(trainingslist.get(position).getTime() + " " + "min");
+        }
         holder.category.setText(trainingslist.get(position).getCategory().getName());
         holder.box.setOnCheckedChangeListener(myBoxListener);
         holder.box.setTag(position);

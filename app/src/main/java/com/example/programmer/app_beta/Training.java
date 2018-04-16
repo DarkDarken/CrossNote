@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class Training {
     private String date;
-    private int time;
+    private String time;
     private TrainingCategory category;
     private ArrayList<Motion> motion;
     private boolean box;
 
 
 
-    public Training(String date, int time, TrainingCategory category, ArrayList<Motion> motion, boolean box) {
+    public Training(String date, String time, TrainingCategory category, ArrayList<Motion> motion, boolean box) {
         this.date = date;
         this.time = time;
         this.category = category;
@@ -30,11 +30,11 @@ public class Training {
         this.category = category;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

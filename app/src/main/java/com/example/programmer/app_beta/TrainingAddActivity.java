@@ -5,13 +5,16 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +32,7 @@ public class TrainingAddActivity extends AppCompatActivity {
     private EditText timeEditText;
     private Spinner categorySpinner;
     private EditText workEditText;
+    private TextInputLayout layout;
     private CategoryAdapter categoryAdapter;
     private TrainingCategory trainingCategory;
 
@@ -44,6 +48,7 @@ public class TrainingAddActivity extends AppCompatActivity {
         dateEditText = (TextView) findViewById(R.id.dataText);
         timeEditText = (EditText) findViewById(R.id.setTimeEdit);
         categorySpinner = (Spinner) findViewById(R.id.typeWodSpinner);
+        layout = (TextInputLayout) findViewById(R.id.textInputTime);
 
         categoryAdapter = new CategoryAdapter(this, trainingCategory);
         categorySpinner.setAdapter(categoryAdapter);
@@ -57,17 +62,41 @@ public class TrainingAddActivity extends AppCompatActivity {
                 addNewTraining();
             }
         });
+
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i == 2) {
+                    timeEditText.setHint("rounds");
+                    layout.setHint("rounds");
+                    timeEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                }else if(i == 3){
+                    layout.setHint("bemchmark");
+                    timeEditText.setHint("bemchmark");
+                    timeEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+                }else{
+                    layout.setHint("time");
+                    timeEditText.setHint("time");
+                    timeEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void addNewTraining() {
-        int time = 0;
-        //String work = workEditText.getText().toString();
         if( !timeEditText.getText().toString().equals("") && timeEditText.getText().toString().length() > 0 )
         {
             ArrayList<Motion> motionList = new ArrayList<Motion>();
 
             String date = dateEditText.getText().toString();
-            time = Integer.parseInt(timeEditText.getText().toString());
+
+            String time = timeEditText.getText().toString();
+
             TrainingCategory category = (TrainingCategory) categorySpinner.getSelectedItem();
             boolean box = false;
 

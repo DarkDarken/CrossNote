@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/backgroundadd"
+    android:background="@mipmap/bg_new"
     tools:context="com.example.programmer.app_beta.MainActivity">
 
     <include

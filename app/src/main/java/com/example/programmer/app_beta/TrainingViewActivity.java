@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.example.programmer.app_beta.TrainingListActivity.POSITION;
 
@@ -31,8 +34,10 @@ public class TrainingViewActivity extends AppCompatActivity {
 
     TextView textView;
     AlertDialog dialog;
-    EditText editText;
+    private View alertView;
     ListMotionAdapter adapter;
+    ArrayList<Motion> list;
+    FloatingActionButton addButton;
 
 
     @Override
@@ -48,6 +53,11 @@ public class TrainingViewActivity extends AppCompatActivity {
         final int position = Integer.parseInt(positionString);
 
 
+        list = TrainingDatabase.getTrainings().get(position).getMotion();
+
+        addButton = (FloatingActionButton) findViewById(R.id.addMotionView);
+
+
         ArrayList<Motion> motion = TrainingDatabase.getTrainings().get(position).getMotion();
 
         final ListView listView = (ListView) findViewById(R.id.listViewItems);
@@ -58,19 +68,110 @@ public class TrainingViewActivity extends AppCompatActivity {
 
 
         String category = TrainingDatabase.getTrainings().get(position).getCategory().getName();
-        int time = TrainingDatabase.getTrainings().get(position).getTime();
-        String timeString = time + " " + "min";
-
+        String time = TrainingDatabase.getTrainings().get(position).getTime();
+        String timeString;
+        if(category == "RFT"){
+            if(time == "1") {
+                timeString = time + " " + "round";
+            } else {
+                timeString = time + " " + "rounds";
+            }
+        } else if(category == "Benchmark") {
+            timeString = time + "";
+        } else{
+            timeString = time + " " + "min";
+        }
         final TextView textTime = (TextView) findViewById(R.id.textTime);
         final TextView textCategory = (TextView) findViewById(R.id.textCategory);
         textTime.setText(timeString);
         textCategory.setText(category);
 
 
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        alertView = inflater.inflate(R.layout.custom_alert_layout, null);
+
+        dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme).create();
+        final Spinner mSpinner= (Spinner) alertView.findViewById(R.id.categoryMotion);
+        final EditText mRep = (EditText) alertView.findViewById(R.id.repEdit);
+        final EditText mWe = (EditText) alertView.findViewById(R.id.weightEdite);
+
+
+        final ArrayAdapter<MotionCategory> mAdapter = new ArrayAdapter<MotionCategory>(
+                TrainingViewActivity.this, android.R.layout.simple_spinner_item, MotionCategory.values());
+        mSpinner.setAdapter(mAdapter);
+
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int element, long l) {
+                dialog.setTitle("Edit the training");
+                dialog.setView(alertView);
+                mRep.setText(TrainingDatabase.getTrainings().get(position).getMotion().get(element).getRepetition());
+                mWe.setText(TrainingDatabase.getTrainings().get(position).getMotion().get(element).getWeight());
+                mSpinner.setSelection(mAdapter.getPosition(TrainingDatabase.getTrainings().get(position).getMotion().get(element).getMotionCategory()));
+                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "SAVE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                       list.remove(element);
+
+                       String rep = mRep.getText().toString();
+                       MotionCategory category = (MotionCategory) mSpinner.getSelectedItem();
+                       String mass = mWe.getText().toString();
+
+                        Motion motion = new Motion(rep, category, mass);
+
+                        list.add(element, motion);
+                        adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetInvalidated();
+                    }
+                });
+                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int element, long l) {
+                removeItemFromList(element);
+                return true;
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setTitle("Add new motion");
+                dialog.setView(alertView);
+                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "ADD", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String rep = mRep.getText().toString();
+                        MotionCategory category = (MotionCategory) mSpinner.getSelectedItem();
+                        String mass = mWe.getText().toString();
+
+                        Motion motion = new Motion(rep, category, mass);
+
+                        list.add(motion);
+                        adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetInvalidated();
+                    }
+                });
+                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.show();
             }
         });
     }
@@ -80,29 +181,39 @@ public class TrainingViewActivity extends AppCompatActivity {
         return true;
     }
 
-    /*public void EditMotion(final int position, final int element){
-        dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme).create();
-        editText = new EditText(this);
-        dialog.setTitle("Edit the training");
-        dialog.setView(editText);
 
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "SAVE", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                ArrayList<Motion> list = TrainingDatabase.getTrainings().get(position).getMotion();
-                list.remove(element);
-                String rep = list.get(element).getRepetition();
-                String mot = list.get(element).getMotionCategory().getName();
-                String w =
-                Motion motion = new Motion()
-                list.add(element, );
-            }
-        });
-    }*/
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(TrainingViewActivity.this, TrainingListActivity.class);
         startActivity(intent);
         return;
+    }
+    protected void removeItemFromList(int element) {
+        final int deletePosition = element;
+
+        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(TrainingViewActivity.this);
+
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete item?");
+        alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                list.remove(deletePosition);
+
+                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetInvalidated();
+
+            }
+        });
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
     }
 }

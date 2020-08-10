@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_trainings"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="@string/nav_trainings"
+            app:actionLayout="@layout/main_counter"/>
+        <item
+            android:id="@+id/nav_stoper"
+            android:icon="@drawable/ic_timer_black_24dp"
+            android:title="@string/nav_stoper" />
+        <item
+            android:id="@+id/nav_stoper_emom"
+            android:icon="@drawable/ic_access_alarms_black_24dp"
+            android:title="@string/nav_stoper_emom" />
+        <item
+            android:id="@+id/nav_achievement"
+            android:icon="@drawable/ic_stat_name"
+            android:title="@string/nav_achievement"
+            app:actionLayout="@layout/achievment_counter"/>
+        <item
+            android:id="@+id/nav_calculator"
+            android:icon="@drawable/ic_calculator"
+            android:title="Calculator"/>
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="@string/nav_info" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+</menu>

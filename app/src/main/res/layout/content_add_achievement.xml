@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="myApp.michal.crossNote.Activites.Achievement.AddAchievementActivity"
+    tools:showIn="@layout/activity_add_achievement">
+
+    <Spinner
+        android:id="@+id/typeMotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:alpha="0.6"
+        android:background="@android:color/black"
+        android:backgroundTint="@color/darkGray"
+        android:popupBackground="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:id="@+id/typeBenchmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:alpha="0.6"
+        android:background="@android:color/black"
+        android:backgroundTint="@color/darkGray"
+        android:popupBackground="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:id="@+id/typeHero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:alpha="0.6"
+        android:background="@android:color/black"
+        android:backgroundTint="@color/darkGray"
+        android:popupBackground="@android:color/transparent"
+        android:textAlignment="center" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputResultAddAchievement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/typeBenchmark"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/darkGray"
+        android:textAlignment="textStart">
+
+        <EditText
+            android:id="@+id/resultEditTextAddAchievement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textColor="@color/darkGray"
+            android:textColorHint="#59ffffff"
+            android:hint="@string/Record"
+            android:textSize="@dimen/text_size_12" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dataDataData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:textColor="@color/darkGray"
+        android:textColorHint="#59ffffff">
+
+        <EditText
+            android:id="@+id/dataData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:focusable="false"
+            android:onClick="showDatePickerDialog"
+            android:drawableEnd="@drawable/ic_date_range_black_24dp"
+            android:textColor="@color/darkGray"
+            android:textColorHint="#59ffffff"
+            android:textSize="@dimen/text_size_12" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

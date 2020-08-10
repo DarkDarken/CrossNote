@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/animation_list_splash">
+    <item>
+            <shape android:shape="line" android:top="1dip">
+                <stroke android:width="1dip"
+                    android:color="#000000"/>
+            </shape>
+    </item>
+
+</animated-rotate>

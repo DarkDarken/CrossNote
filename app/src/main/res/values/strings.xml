@@ -1,79 +1,66 @@
 <resources>
     <string name="app_name">CrossNote</string>
-    <string name="addText">Add workout</string>
-    <string name="myHistory">My workout</string>
-    <string name="action_search">Search</string>
-    <string name="title_activity_settings">Settings</string>
 
-    <!-- Strings related to Settings -->
+    //to remove
+    <string name="title_activity_emom_timer">EmomTimerActivity</string>
 
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    //Activity titles
+    <string name="title_activity_main">Workouts</string>
+    <string name="title_activity_add_training">Add workout</string>
+    <string name="title_activity_add_motions">Add workout element</string>
+    <string name="title_activity_share">Share workout</string>
+    <string name="title_activity_view_training">Workout</string>
+    <string name="title_activity_stopers">Stoper</string>
+    <string name="title_activity_info">Info</string>
+    <string name="title_activity_emom_timer_loader">Choose EMOM</string>
+    <string name="title_activity_test_emom_timer">EMOM timer</string>
+    <string name="title_activity_calculator">PR calculator</string>
+    <string name="title_activity_graph_test">Graph</string>
+    <string name="title_activity_achievement_list">Achievements</string>
+    <string name="title_activity_add_achievement">Add achievement</string>
+    <string name="title_activity_add_record">Add new record</string>
+    <string name="title_activity_view_achievement">ViewAchievementActivity</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
+    //activity_main_drawer
+    <string name="nav_trainings">Workouts</string>
+    <string name="nav_stoper">Stoper</string>
+    <string name="nav_stoper_emom">EMOM timer</string>
+    <string name="nav_achievement">Achievements</string>
+    <string name="nav_info">Info</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="info_text">
+        This application is a non-profit, hobby project designed to save your crossfit
+        workouts and follow your progress. It will help you to calculate personal records and
+        to share workouts with your friends.
     </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="info_email">
+        <b><u>To contact me</u></b>
+    </string>
+    <string name="email_address">mailto:fluffynicebadger@gmail.com</string>
+    <string name="undo">Undo</string>
+    <string name="delete_item">Delete item?</string>
+    <string name="Search">Search...</string>
+    <string name="Empty">Empty</string>
+    <string name="Zero">0</string>
+    <string name="DoubleZero">00</string>
+    <string name="Ten">10</string>
+    <string name="Reset">Reset</string>
+    <string name="Result">Result</string>
+    <string name="Record">Record</string>
+    <string name="Repetition">Repetition</string>
+    <string name="Meters">Meters</string>
+    <string name="Cals">Cals</string>
+    <string name="IsMEoreThanOnElementInTheOneMinute">Is more than one element in the one minute?</string>
+    <string name="LoadTraining">Load training</string>
+    <string name="Finish">Finish!</string>
+    <string name="WorkoutIsEmpty">Workout is empty</string>
+    <string name="ROUND">round</string>
+    <string name="ROUNDS">rounds</string>
+    <string name="MINUTE">minute</string>
+    <string name="MINUTES">minutes</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="SAVE">SAVE</string>
 </resources>

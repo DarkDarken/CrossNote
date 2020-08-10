@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:singleLine="true"
-    android:ellipsize="marquee"
-    android:textColor="#97172f"
+    android:layout_height="wrap_content"
     >
 
-
-</CheckedTextView>
+    <TextView
+        android:id="@+id/spDropItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:fadingEdgeLength="12px"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/colorAccent"
+        android:background="@android:color/black"
+        android:paddingLeft="13dp"
+        android:alpha="0.51"
+        android:layout_weight="1"
+        android:gravity="center|left"
+        android:textSize="@dimen/text_size_12"
+        android:text="TextView" />
+</LinearLayout>

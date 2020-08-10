@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="myApp.michal.crossNote.Activites.Achievement.AddRecordActivity"
+    tools:showIn="@layout/activity_add_record">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputResultAddRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/darkGray"
+        android:hint="@string/Record"
+        android:textColorHint="#59ffffff">
+
+        <EditText
+            android:id="@+id/resultEditTextAddRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textColor="@color/darkGray"
+            android:textColorHint="#59ffffff"
+            android:hint="@string/Record"
+            android:textSize="@dimen/text_size_12" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dataDataData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textInputResultAddRecord"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/darkGray"
+        android:textColorHint="#59ffffff">
+
+        <EditText
+            android:id="@+id/dataData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:focusable="false"
+            android:onClick="showDatePickerDialog"
+            android:drawableEnd="@drawable/ic_date_range_black_24dp"
+            android:textColor="@color/darkGray"
+            android:textColorHint="#59ffffff"
+            android:textSize="@dimen/text_size_12"
+            tools:ignore="LabelFor" />
+    </com.google.android.material.textfield.TextInputLayout>
+</RelativeLayout>

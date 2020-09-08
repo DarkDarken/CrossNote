@@ -159,7 +159,7 @@ public class TimerHandlerEvent implements IHandlerEvent {
         };
     }
 
-    public static void updateButtons(){
+    private static void updateButtons(){
         if(EmomTimerActivity.s_isRunning){
             EmomTimerActivity.s_resetText.setVisibility(View.INVISIBLE);
             EmomTimerActivity.s_play.setImageResource(drawable.ic_stop_black_24dp);
@@ -191,7 +191,7 @@ public class TimerHandlerEvent implements IHandlerEvent {
         return sb.append(motion).toString();
     }
 
-    public String getStringList(int position){
+    private String getStringList(int position){
         List<MotionBuilder> list = dbHelper.getAll().get(position).getMotionList();
         list.remove(0);
         String name = "";

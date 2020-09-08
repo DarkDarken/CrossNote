@@ -30,17 +30,8 @@ public class BitmapBuilder {
 
     public BitmapBuilder(Context context, int position, DbHelper dbHelper){
         this.context = context;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            bitmap = Bitmap.createBitmap(
-                    600,
-                    800,
-                    Bitmap.Config.RGBA_F16);
-        } else {
-            bitmap = Bitmap.createBitmap(
-                    600,
-                    800,
-                    Bitmap.Config.ARGB_8888);
-        }
+        bitmap = Build.VERSION.SDK_INT < Build.VERSION_CODES.O ? createBitmap(Bitmap.Config.ARGB_8888)
+                                                               : createBitmap(Bitmap.Config.RGBA_F16);
         canvas = new Canvas(bitmap);
         canvas.drawColor(Color.WHITE);
         paint = new Paint();
@@ -72,6 +63,11 @@ public class BitmapBuilder {
         bitmap.setHeight(finalHeight + 70);
         return bitmap;
     }
+
+    private Bitmap createBitmap(Bitmap.Config config) {
+        return Bitmap.createBitmap(600, 800, config);
+    }
+
 
     private String getLine(int position){
         String s;

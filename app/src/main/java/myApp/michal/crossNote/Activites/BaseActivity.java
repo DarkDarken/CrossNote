@@ -39,7 +39,6 @@ import myApp.michal.crossNote.Databases.DbPrHelper;
 public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         IBaseActivity {
 
-
     public void setToggle(DrawerLayout drawerLayout, Toolbar toolbar){
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

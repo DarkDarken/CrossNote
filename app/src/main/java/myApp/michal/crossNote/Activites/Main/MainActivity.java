@@ -44,7 +44,6 @@ public class MainActivity extends BaseActivity implements RecyclerMainListAdapte
         setContentView(R.layout.activity_main);
 
         initGUI();
-
         initToolbarAndWindow(toolbar, getString(R.string.title_activity_main));
 
         dbHelper.sortAndReverse();
